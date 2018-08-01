@@ -23,7 +23,7 @@ var quizAnswers = [
   'no',
   'yes',
   4,
-  ['canada', 'ecuador', 'the netherlands', 'portugal', 'hungary', 'austria', 'germany', 'norway' ]
+  ['canada', 'ecuador', 'the netherlands', 'portugal', 'iceland', 'hungary', 'austria', 'germany', 'norway' ]
 ];
 
 for (var i = 0; i < 7; i++){
@@ -48,11 +48,27 @@ for (var i = 0; i < 7; i++){
       correctAnswers += 1;
     }
     console.log(userAnswerList);
+  } else if(i === 5) {
+    while(guessesLeft > 0){
+      userAnswer = prompt(quizQuestions[i]);
+      if (userAnswer === quizAnswers[i]){
+        alert('Great guess! That is correct.');
+        correctAnswers += 1;
+        break;
+      } else if (userAnswer > quizAnswers[i]){
+        guessesLeft--;
+        alert('That\'s too high. You have ' + guessesLeft + ' guesses left.');
+      } else {
+        guessesLeft--;
+        alert('That\'s too low! You have ' + guessesLeft + ' guesses left.'  );
+      }
+    }
+
   } 
 
 }
 
-alert('Congratulations, you got ' + correctAnswers + ' out of 5 correct!');
+alert('Congratulations, you got ' + correctAnswers + ' out of 7 correct!');
 
 // var userName = prompt('What is your name?');
 // console.log(userName + ' is using your site.');
