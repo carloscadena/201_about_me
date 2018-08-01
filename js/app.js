@@ -3,15 +3,17 @@
 console.log('js is linked');
 
 var correctAnswers = 0;
-var questionsAsked = 0;
-var userAnswerList = []
+var userAnswerList = [];
+var guessesLeft = 4;
 
 var quizQuestions = [
   'Do I have a pet?',
   'Have I ever jumped out of an airplane?',
   'Do you think I\'ve been out of the country?',
   'Am I an expert programmer?',
-  'Do I ride a motorcycle?'
+  'Do I ride a motorcycle?',
+  'One what day of the month is my birthday?',
+  'Can you guess a country I\'ve visited outside the US?'
 ];
 
 var quizAnswers = [
@@ -19,22 +21,38 @@ var quizAnswers = [
   'no',
   'yes',
   'no',
-  'yes'
+  'yes',
+  4,
+  ['canada', 'ecuador', 'the netherlands', 'portugal', 'hungary', 'austria', 'germany', 'norway' ]
 ];
 
-for (var i = 0; i < 5; i++){
-  var userAnswer = prompt(quizQuestions[i]);
-  if (userAnswer.toLowerCase() === 'n' || userAnswer.toLowerCase() === 'no'){
-    userAnswer = 'no';
-    userAnswerList.push(userAnswer);
-  } else if (userAnswer.toLowerCase() === 'y' || userAnswer.toLowerCase() === 'yes') {
-    userAnswer = 'yes';
-    userAnswerList.push(userAnswer);
-  } else {
-    alert('Not a valid response. Please enter either yes or no, or y or n')
-  }
-  console.log(userAnswerList)
+for (var i = 0; i < 7; i++){
+  if(i < 5){
+    var validResponse = false;
+    while (!validResponse){
+      var userAnswer = prompt(quizQuestions[i]);
+      if (userAnswer.toLowerCase() === 'n' || userAnswer.toLowerCase() === 'no'){
+        userAnswer = 'no';
+        userAnswerList.push(userAnswer);
+        validResponse = true;
+      } else if (userAnswer.toLowerCase() === 'y' || userAnswer.toLowerCase() === 'yes') {
+        userAnswer = 'yes';
+        userAnswerList.push(userAnswer);
+        validResponse = true;
+      } else {
+        alert('Not a valid response. Please enter either yes or no, or y or n')
+        validResponse = false;
+      }
+    }
+    if (userAnswer === quizAnswers[i]){
+      correctAnswers += 1;
+    }
+    console.log(userAnswerList);
+  } 
+
 }
+
+alert('Congratulations, you got ' + correctAnswers + ' out of 5 correct!');
 
 // var userName = prompt('What is your name?');
 // console.log(userName + ' is using your site.');
