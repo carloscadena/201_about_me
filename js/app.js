@@ -29,25 +29,25 @@ var quizAnswers = [
 var userName = prompt('Hello! What\'s your name?');
 console.log(userName + ' is using the site.')
 alert('Hi, ' + userName + '! Before I show you my page let\'s take a quiz.')
-
+var acceptableResponses = ['yes', 'no', 'y', 'n'];
+function validResponseCheck(userAnswer){
+  userAnswer = userAnswer.toLowerCase();
+  if(acceptableResponses.includes(userAnswer)){
+    userAnswerList.push(userAnswer);
+    validResponse = true;
+    return true
+  } else {
+    alert('Not a valid response. Please enter either yes or no, or y or n');
+    validResponse = false;
+  }
+}
 for (var i = 0; i < 7; i++){
   console.log('We\'ve made it to question ' + (i + 1))
   if(i < 5){
     var validResponse = false;
     while (!validResponse){
       var userAnswer = prompt(quizQuestions[i]);
-      if (userAnswer.toLowerCase() === 'n' || userAnswer.toLowerCase() === 'no'){
-        userAnswer = 'no';
-        userAnswerList.push(userAnswer);
-        validResponse = true;
-      } else if (userAnswer.toLowerCase() === 'y' || userAnswer.toLowerCase() === 'yes') {
-        userAnswer = 'yes';
-        userAnswerList.push(userAnswer);
-        validResponse = true;
-      } else {
-        alert('Not a valid response. Please enter either yes or no, or y or n');
-        validResponse = false;
-      }
+      validResponseCheck(userAnswer);
     }
     if (userAnswer === quizAnswers[i]){
       correctAnswers += 1;
