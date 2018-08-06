@@ -8,15 +8,16 @@ body {
 
 h1 {
     color: blue;
+    font-size: 100%;
 }
 p {
-    background-color: grey;
+    background: rgba(38, 46, 38, 0.8)
 }
 
 h3 {
-    background-color: grey; 
+    background: rgba(34, 44, 34, 0.8)
 }
 
 li {
-    background-color: grey;
+    background: rgba(35, 44, 36, 0.8)
 }
